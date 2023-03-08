@@ -2,7 +2,7 @@ let radius1, radius2, centerX, centerY, centerX2, centerY2;
 let angle = 0;
 let rotationSpeed = 0.01;
 let colors = ["#00CCFF", "#00F"];
-let step = 25;
+let step = 15;
 let slider;
 
 function setup() {
@@ -37,7 +37,7 @@ function draw() {
 		radius2 = r;
 	}
 	let j = 1;
-	for (let r = radius2; r >= 0; r -= step) {
+	for (let r = radius2; r >= step; r -= step) {
 		let tempX = centerX2 + (radius2 - r) * cos(angle + 160);
 		let tempY = centerY2 + (radius2 - r) * sin(angle + 160);
 		fill(colors[j % 2]);
