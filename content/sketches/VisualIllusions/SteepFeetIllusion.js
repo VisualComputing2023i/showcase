@@ -1,12 +1,7 @@
+let sliderSpeed, checkboxConstrast, colorSelector, colorA, colorB
 let widthRects = 30
 let widthSteps = 60
-let sliderSpeed
-let checkboxConstrast
-let colorSelector
 let speed = 0
-let colorA
-let colorB
-
 
 function setup() {
     createCanvas(675, 400)
