@@ -41,7 +41,16 @@ La ilusión fue demostrada inicialmente en 2003. Se propuso que los conductores 
 
 ## Stereokinetic Effect
 
+El _Efecto Cinético de la Profundidad_ es un fenómeno en la percepción visual que ocurre cuando un objeto tridimensional (3D) se percibe como si se moviera a pesar de que se presenta en dos dimensiones (2D). Este efecto se crea por el movimiento relativo de las diferentes partes del objeto, que proporcionan al espectador información sobre la profundidad y forma del objeto.
+
 {{< p5-iframe sketch="/showcase/sketches/VisualIllusions/SKE.js" width="1000" height="600" >}}
+
+El _Efecto Cinético de la Profundidad_ fue descubierto y descrito por primera vez por el psicólogo y neurocientífico James J. Gibson en la década de 1950. Él realizó experimentos en los que presentó a los sujetos imágenes simples de objetos en dos dimensiones que fueron rotados o movidos de diversas maneras. A pesar de que las imágenes eran planas, los sujetos reportaron percibirlos como tridimensionales y en movimiento.
+
+El efecto ocurre porque el movimiento relativo de las diferentes partes del objeto crea señales que el sistema visual interpreta como indicativos de profundidad y forma. Por ejemplo, si se presenta una imagen de un cilindro rotativo, los bordes del cilindro se moverán a diferentes velocidades, creando señales que el sistema visual utiliza para interpretar la forma y orientación del objeto.
+
+El Efecto Cinético de la Profundidad ha sido utilizado en una variedad de campos, incluyendo la psicología, la neurociencia, la visión por computadora y la animación. También es relevante para el diseño de pantallas visuales, como las utilizadas en sistemas de realidad virtual y aumentada. Al comprender cómo el sistema visual percibe la profundidad y el movimiento en imágenes bidimensionales, los investigadores y diseñadores pueden crear visualizaciones más efectivas y atractivas.
+
 
 ## Referencias
 
