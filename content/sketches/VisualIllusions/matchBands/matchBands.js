@@ -60,9 +60,7 @@ function draw() {
     for (let y = 0; y < rows - 1; y++) {
         beginShape(TRIANGLE_STRIP)
         for (let x = 0; x < cols; x++) {
-            if (checkboxMB.checked()) {
-                fill(terrain[y][x] + 100)
-            }
+            !checkboxMB.checked() ? fill(terrain[y][x] + 100) : undefined
             !checkboxColor.checked() ? noStroke() : undefined
             vertex(x * scl, y * scl, terrain[y][x])
             vertex(x * scl, (y + 1) * scl, terrain[y + 1][x])
@@ -76,5 +74,5 @@ function draw() {
 
     noStroke()
     fill('#99ff66')
-    rect(0, -200, 275, 150)
+    rect(0, -200, 280, 120)
 }
