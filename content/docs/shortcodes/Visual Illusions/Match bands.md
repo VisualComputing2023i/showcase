@@ -8,7 +8,7 @@ weight: 2
 
 {{< hint info >}}
 
-**Exercise** \\
+**Exercise** <br/>
 Develop a terrain visualization application. Check out the 3D terrain generation with Perlin noise coding train tutorial.
 
 {{< /hint >}}
