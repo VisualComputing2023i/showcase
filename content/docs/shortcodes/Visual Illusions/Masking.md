@@ -4,13 +4,6 @@ weight: 3
 
 ## Visual masking
 
-{{< hint info >}}
-
-**Exercise** <br/>
-Implement a kinegram and some moiré patterns which are close related visual phenomena to masking.
-
-{{< /hint >}}
-
 ### Introducción
 
 El enmascaramiento visual, también conocido como visual masking, es un fenómeno que afecta a la percepción visual. Se produce cuando la visibilidad de una imagen objetivo se ve disminuida por la presencia de otra imagen, que se llama máscara. En estas situaciones, el objetivo puede resultar invisible o apreciarse con menos contraste o nitidez.
@@ -41,25 +34,42 @@ Este consiste en un patrón que ilustra el fenómeno de ampliación de moiré. E
 {{< p5-iframe sketch="/showcase/sketches/VisualIllusions/masking/shapeMoire.js" width="300" height="274" >}}
 </center>
 
-### Solución
+### Ejercicios
 
-Faltan las instrucciones de uso
+{{< hint info >}}
+
+**Exercise** <br/>
+Implement a kinegram and some moiré patterns which are close related visual phenomena to masking.
+
+{{< /hint >}}
 
 {{< p5-iframe sketch="/showcase/sketches/VisualIllusions/masking/kinegram.js" width="700" height="624" >}}
 
-### Código
+### Códigos
 
-{{< details "Title" open >}}
+{{< details "kinegram.js" open >}}
 
-### Markdown content
+```javascript
+function draw() {
+    background(255)
+    noStroke()
+    image(imgBkg, (width - 600) / 2, 0, 600, 600)
 
-Lorem markdownum insigne...
+    fill(color(0, 0, 0))
+    for (let i = 0; i < 80; i++) {
+        mouseIsPressed
+            ? rect((widthRects * 2 * i) + (mouseX - 350), 0, widthRects, height)
+            : rect((widthRects * 2 * i) + speed, 0, widthRects, height)
+    }
+    speed = ((speed + 0.2) % (width / 3))
+} 
+```
 
 {{< /details >}}
 
 ### Conclusiones
 
-Esto sirve para....
+* Los kinegramas son una fascinante forma de arte cinético que combina patrones visuales para crear imágenes en movimiento sorprendentes. Son, a su vez, una demostración de que ciertos efectos artísticos pueden resultar más útiles, en la cotidianidad, de lo que muchas personas creen; claro ejemplo de eso es el efecto presente en los sellos de autentidad en los documentos oficiales.
 
 ## Referencias
 
@@ -70,3 +80,5 @@ Esto sirve para....
 [3] Kamal, Hala; Völkel, Reinhard; Alda, Javier ( Noviembre de 1998 ). "Propiedades de los lupas Moiré"( PDF ). Ingeniería óptica. 37 ( 11 ): 3007 -- 3014. Código Bib:1998 OptEn..37.3007K. doi:10.1117 / 1.601889. Avaliable in <https://www.spiedigitallibrary.org/journals/optical-engineering/volume-37/issue-11/0000/Properties-of-moire-magnifiers/10.1117/1.601889.short?SSO=1>.
 
 [4] Sarcone, Gianni. "GianniSarcone.com" [Online]. Archived from the original on March 27, 2023. Avaliable in <https://web.archive.org/web/20220628022823/https://www.giannisarcone.com/Kinegrams.html>
+
+[5] Banco de la República de Colombia, "Billete de 20 mil pesos, cinco pasos para reconocerlo" [Online]. Archived from the original on March 5, 2023. Avaliable in <https://web.archive.org/web/20230305011614/banrep.gov.co/es/billetes-monedas/billete-20-mil-pesos-cinco-pasos-para-reconocerlo>

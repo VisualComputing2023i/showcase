@@ -17,9 +17,9 @@ function draw() {
     fill(color(0, 0, 0))
     for (let i = 0; i < 80; i++) {
         rotate(PI / 60)
-        show ? rect((widthRects * 2 * i), 0, widthRects, height) : ""
+        rect((widthRects * 2 * i), 0, widthRects, height)
         rotate(PI / -60)
-        rect((widthRects * 2 * i) + speed - 150, 0, widthRects, height)
+        show ? rect((widthRects * 2 * i) + speed - 150, 0, widthRects, height) : ""
     }
 
     speed = (speed + .1) % 80
