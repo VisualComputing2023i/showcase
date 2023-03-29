@@ -1,18 +1,9 @@
-let img
 let widthRects = 4.4
 let speed = 0
 let show = true
-let run = true
-
-function doubleClicked() {
-    // run = !run
-    // setTimeout(function () {
-    //     run = !run
-    // }, 12000)
-}
 
 function mouseClicked() {
-    // show = !show
+    show = !show
 }
 
 function setup() {
@@ -25,9 +16,9 @@ function draw() {
     noFill()
 
     for (let i = 0; i < 60; i++) {
-        circle(((width + 280) / 4) + speed, (height + 220) / 4, widthRects * 0.8 * i)
+        show ? circle(((width + 280) / 4) + speed, (height + 220) / 4, widthRects * 0.8 * i) : ""
         circle(((width + 280) / 4) - speed, (height + 220) / 4, widthRects * 0.8 * i)
     }
 
-    run ? speed = (speed + .1) % 80 : ""
+    speed = (speed + .1) % 80
 } 

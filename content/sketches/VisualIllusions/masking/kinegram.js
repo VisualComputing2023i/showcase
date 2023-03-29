@@ -9,11 +9,11 @@ function preload() {
 }
 
 function mouseClicked() {
-    run = !run
+    // run = !run
 }
 
 function doubleClicked() {
-    speed = 0
+    // speed = 0
 }
 
 function setup() {
