@@ -6,7 +6,7 @@ let step = 15;
 let slider;
 
 function setup() {
-	createCanvas(980, 580);
+	createCanvas(680, 400);
 	centerX = width / 2;
 	centerY = height / 2;
 	radius1 = height / 2 - height / 20;

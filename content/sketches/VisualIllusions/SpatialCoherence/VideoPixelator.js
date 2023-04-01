@@ -1,44 +1,73 @@
 let video;
+let pixelSize = 10;
+let isPixelatorOn = true;
 
 function setup() {
-  createCanvas(710, 400);
-  video = createVideo('/showcase/sketches/fingers.mov');
-  video.loop();
-  video.hide();
+	createCanvas(640, 480);
+	pixelDensity(1);
+	video = createCapture(VIDEO);
+	video.size(width, height);
+	video.hide();
 }
 
 function draw() {
-  background(0);
-  image(video, 0, 0);
-  loadPixels();
-  let blockSize = 10;
-  for (let y = 0; y < height; y += blockSize) {
-    for (let x = 0; x < width; x += blockSize) {
-      let blockColor = getBlockColor(x, y, blockSize);
-      for (let i = 0; i < blockSize; i++) {
-        for (let j = 0; j < blockSize; j++) {
-          let index = 4 * ((y + j) * width + (x + i));
-          set(index, blockColor[0]);
-          set(index + 1, blockColor[1]);
-          set(index + 2, blockColor[2]);
-        }
-      }
-    }
-  }
-  updatePixels();
+	if (isPixelatorOn) {
+		// Pixelator mode
+		background(0);
+		video.loadPixels();
+		for (let x = 0; x < width; x += pixelSize) {
+			for (let y = 0; y < height; y += pixelSize) {
+				let sumR = 0;
+				let sumG = 0;
+				let sumB = 0;
+				let count = 0;
+				for (let i = 0; i < pixelSize; i++) {
+					for (let j = 0; j < pixelSize; j++) {
+						let px = x + i + (y + j) * width;
+						if (px < video.pixels.length) {
+							sumR += video.pixels[px * 4];
+							sumG += video.pixels[px * 4 + 1];
+							sumB += video.pixels[px * 4 + 2];
+							count++;
+						}
+					}
+				}
+				let avgR = sumR / count;
+				let avgG = sumG / count;
+				let avgB = sumB / count;
+				fill(avgR, avgG, avgB);
+				noStroke();
+				rect(x, y, pixelSize, pixelSize);
+			}
+		}
+		textSize(20);
+		fill(255);
+		textAlign(CENTER, BOTTOM);
+		text("Color AVG Pixelator", width / 2, height - 10);
+	} else {
+		// Spatial coherence mode
+		background(0);
+		video.loadPixels();
+		for (let x = 0; x < width; x += pixelSize) {
+			for (let y = 0; y < height; y += pixelSize) {
+				let index = (x + y * width) * 4;
+				let r = video.pixels[index];
+				let g = video.pixels[index + 1];
+				let b = video.pixels[index + 2];
+				let a = video.pixels[index + 3];
+				fill(r, g, b, a);
+				rect(x, y, pixelSize, pixelSize);
+			}
+		}
+		textSize(20);
+		fill(255);
+		textAlign(CENTER, BOTTOM);
+		text("Spatial Coherence Pixelator", width / 2, height - 10);
+	}
 }
 
-function getBlockColor(x, y, blockSize) {
-  let r = 0, g = 0, b = 0;
-  let count = 0;
-  for (let i = 0; i < blockSize; i++) {
-    for (let j = 0; j < blockSize; j++) {
-      let index = 4 * ((y + j) * width + (x + i));
-      r += pixels[index];
-      g += pixels[index + 1];
-      b += pixels[index + 2];
-      count++;
-    }
-  }
-  return [r / count, g / count, b / count];
+function keyPressed() {
+	if (key === " ") {
+		isPixelatorOn = !isPixelatorOn;
+	}
 }
