@@ -21,7 +21,7 @@ Cuando el primer autobús se encuentra sobre las rayas blancas, el contraste es 
 
 En general, los movimientos de mayor contraste parecen más rápidos que los de menor contraste. El efecto desaparece cuando se elimina la textura rayada de la calle porque no queda contraste, lo que demuestra que el fondo de un objeto puede tener un efecto significativo en su velocidad percibida.
 
-{{< p5-iframe sketch="/showcase/sketches/VisualIllusions/steepFeetIllusion.js" width="700" height="425" >}}
+{{< p5-iframe sketch="/showcase/sketches/VisualIllusions/SteepFeetIllusion.js" width="700" height="425" >}}
 
 ### Efecto de Contraste
 
@@ -43,7 +43,7 @@ La ilusión fue demostrada inicialmente en 2003. Se propuso que los conductores 
 
 El _Efecto Cinético de la Profundidad_ es un fenómeno en la percepción visual que ocurre cuando un objeto tridimensional (3D) se percibe como si se moviera a pesar de que se presenta en dos dimensiones (2D). Este efecto se crea por el movimiento relativo de las diferentes partes del objeto, que proporcionan al espectador información sobre la profundidad y forma del objeto.
 
-{{< p5-iframe sketch="/showcase/sketches/VisualIllusions/SKE.js" width="1000" height="600" >}}
+{{< p5-iframe sketch="/showcase/sketches/VisualIllusions/SKE.js" width="700" height="425" >}}
 
 El _Efecto Cinético de la Profundidad_ fue descubierto y descrito por primera vez por el psicólogo y neurocientífico James J. Gibson en la década de 1950. Él realizó experimentos en los que presentó a los sujetos imágenes simples de objetos en dos dimensiones que fueron rotados o movidos de diversas maneras. A pesar de que las imágenes eran planas, los sujetos reportaron percibirlos como tridimensionales y en movimiento.
 
