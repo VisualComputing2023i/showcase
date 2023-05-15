@@ -1,11 +1,9 @@
-let lumaShader, src, img_src, video_src, video_on, lightness, uv
+let lumaShader, src, img_src, video_src, video_on
 
 function preload() {
     lumaShader = readShader('/showcase/sketches/shaders/texturing/luma.frag', { varyings: Tree.texcoords2 })
-    // video source: https://t.ly/LWUs2
     video_src = createVideo(['/showcase/sketches/shaders/texturing/wagon.webm'])
-    video_src.hide() // by default video shows up in separate dom
-    // image source: https://t.ly/Dz8W
+    video_src.hide() // display: none
     img_src = loadImage('/showcase/sketches/shaders/texturing/fire_breathing.jpg')
     src = img_src
 }
@@ -13,23 +11,27 @@ function preload() {
 function setup() {
     createCanvas(680, 500, WEBGL)
     noStroke()
-    textureMode(NORMAL)
+    textureMode(NORMAL)     //normalizamos las coordenadas de vertex
     shader(lumaShader)
+
     video_on = createCheckbox('video', false)
     video_on.style('color', 'white')
     video_on.changed(() => {
-        src = video_on.checked() ? video_src : img_src
+        src = (video_on.checked() ? video_src : img_src)
         video_on.checked() ? video_src.loop() : video_src.pause()
     })
     video_on.position(10, 10)
-    lightness = createCheckbox('luma', false)
-    lightness.position(10, 30)
-    lightness.style('color', 'white')
-    lightness.input(() => lumaShader.setUniform('lightness', lightness.checked()))
-    uv = createCheckbox('uv visualization', false)
-    uv.style('color', 'white')
-    uv.changed(() => lumaShader.setUniform('uv', uv.checked()))
-    uv.position(10, 50)
+
+    radio = createRadio()
+    radio.option('rgb')
+    radio.option('luma')
+    radio.option('hsv')
+    radio.option('hsl')
+    radio.option('uv')
+    radio.style('width', '60px')
+    radio.style('color', 'white')
+    radio.selected('rgb')
+    radio.position(10, 30)
 }
 
 function draw() {
@@ -41,13 +43,22 @@ function draw() {
             y                  v
             |                  |
     (-1,1,0)|   (1,1,0)        (0,1)     (1,1)
-      *_____|_____*            *__________*   
+      *_____|_____*            *__________*
       |     |     |            |          |        
       |____NDC____|__x         | texture  |        
       |     |     |            |  space   |
       *_____|_____*            *__________*___ u
     (-1,-1,0)   (1,-1,0)       (0,0)    (1,0) 
+
+
+    Nota: debemos interpretar el espacio uv de la linea de u hacia abajo (aplicando una rotación respecto a u)
     */
+
+    lumaShader.setUniform('lightness', radio.value() === 'luma')
+    lumaShader.setUniform('brightness', radio.value() === 'hsv')
+    lumaShader.setUniform('intensity', radio.value() === 'hsl')
+    lumaShader.setUniform('uv', radio.value() === 'uv')
+
     lumaShader.setUniform('texture', src)
     beginShape()
     // format is: vertex(x, y, z, u, v)
