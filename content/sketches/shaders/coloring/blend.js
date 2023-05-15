@@ -25,7 +25,9 @@ function setup() {
 function draw() {
     // rectMode, e.g., rectMode(RADIUS) requires Tree.pmvMatrix
     // so no square but beginShape / endShape
-
+    
+    //El color que tenemos aquí va a ser el resultante de `gl_FragColor` en blend.frag entonces simplemente debemos modificar ese parámetro desde esta función por medio de la función setUniform().
+    
     let l = 0.8
     let offset = (1 - l) / 2
     let color1Color = color1.color()
@@ -33,21 +35,21 @@ function draw() {
 
     background(0)
 
+    //Primer Selector
     blendShader.setUniform('brightness', 1.0)
-    blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0])
     blendShader.setUniform('uMaterial2', [1.0, 1.0, 1.0, 1.0])
-
+    blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0])
     beginShape()
-    vertex(-offset - l, +offset, 0)
+    vertex(-offset - l, +offset, 0) //coord (x,y,[z])
     vertex(-offset, +offset, 0)
     vertex(-offset, +offset + l, 0)
     vertex(-offset - l, +offset + l, 0)
     endShape()
 
+    //Segundo Selector
+    blendShader.setUniform('brightness', 1.0)
     blendShader.setUniform('uMaterial1', [1.0, 1.0, 1.0, 1.0])
     blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0])
-    blendShader.setUniform('brightness', 1.0)
-
     beginShape()
     vertex(+offset, +offset, 0)
     vertex(+offset + l, +offset, 0)
@@ -55,10 +57,10 @@ function draw() {
     vertex(+offset, +offset + l, 0)
     endShape()
 
+    //Mezcla Resultante
+    blendShader.setUniform('brightness', brightness.value())
     blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0])
     blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0])
-    blendShader.setUniform('brightness', brightness.value())
-
     beginShape()
     vertex(-l / 2, -offset - l, 0)
     vertex(+l / 2, -offset - l, 0)
