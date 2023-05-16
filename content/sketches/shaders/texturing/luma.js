@@ -40,6 +40,7 @@ function draw() {
     since textureMode is NORMAL u, v texture coordinates ∈ [-1..1]
     see: https://p5js.org/reference/#/p5/beginShape
          https://p5js.org/reference/#/p5/vertex
+         
             y                  v
             |                  |
     (-1,1,0)|   (1,1,0)        (0,1)     (1,1)
